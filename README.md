@@ -4,4 +4,4 @@ This repository contains a simple app that uses express.js and mustache template
 
 ## Solution
 
-You can find the solution here: https://github.com/vpharvard/practice
+You can find the solution here: https://github.com/vpharvard/solution
