@@ -1,53 +1,32 @@
 const hb = require('handlebars');
 
-const mortgagePage = `
+const Page = `
   <!doctype html>
 
   <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Acme Bank</title>
+    <title>Nested Components</title>
+    <link rel="stylesheet" href="/static/styles.css">
   </head>
   <body>
-    Thank you for visiting Acme Bank. Click <a href="/about">here</a> to learn more!<br><br>
-    
-    {{#form}}
-      {{> mortgageForm}}
-      <br><br>
-    {{/form}}
-
-    {{#results}}
-      {{> mortgageResults}}
-      <br><br>
-    {{/results}}
-
-    {{#about}}
-      Acme Bank is a new bank in the Boston area.
-    {{/about}}
-
+    {{> component1}}
   </body>
   </html>
 `;
 
-const mortgageForm = `
-  <p>Use the form below to learn what your monthly mortgage payments can be.</p>
-  <form action="/">
-  Loan Amount<br>
-  <input type="text" name="loanAmount"><br>
-  Interest Rate<br>
-  <input type="text" name="interestRate"><br>
-  Length of Loan in Years<br>
-  <input type="text" name="period"><br><br>
-  <input type="submit" value="Submit">
-  </form>
+const component1 = `
+<div class="component1">
+  {{> component2}}
+</div>
+
 `;
 
-const mortgageResults = `
-  <p>The results of the mortgage details you entered are:</p>
-  $ {{payment}}
+const component2 = `
+  <div class="component2">Nested Component</div>
 `;
-const template = hb.compile(mortgagePage);
-hb.registerPartial('mortgageForm', mortgageForm);
-hb.registerPartial('mortgageResults', mortgageResults);
+const template = hb.compile(Page);
+hb.registerPartial('component1', component1);
+hb.registerPartial('component2', component2);
 
 module.exports = template;
